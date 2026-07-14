@@ -52,7 +52,7 @@ class List {
     }
 
     Next() {
-        if(this.Position < this.Length-1) {
+        if(this.Position < this.Length) {
             this.Position++;
         }
     }
