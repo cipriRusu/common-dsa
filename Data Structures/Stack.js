@@ -5,6 +5,7 @@ class Stack {
         this.Push;
         this.Pop;
         this.Peek;
+        this.Clear;
     }
 
     Push(element) {
@@ -17,5 +18,9 @@ class Stack {
 
     Peek() {
         return this.dataSource[this.Length - 1];
+    }
+
+    Clear() {
+        this.Length = 0;
     }
 }
