@@ -45,6 +45,12 @@ class List {
         return false;
     }
 
+    MoveTo(newPosition) {
+        if(newPosition > 0 && newPosition < this.Length) {
+            this.Position = newPosition;
+        }
+    }
+
     Next() {
         if(this.Position < this.Length-1) {
             this.Position++;
