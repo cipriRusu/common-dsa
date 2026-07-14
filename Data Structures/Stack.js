@@ -8,18 +8,14 @@ class Stack {
     }
 
     Push(element) {
-        this.Length++;
-        this.dataSource.push(element);
+        this.dataSource[this.Length++] = element;
     }
 
     Pop() {
-        if(this.Length > 0) {
-            this.Length--;
-            return this.dataSource.pop()
-        }
+        return this.dataSource[--this.Length]
     }
 
     Peek() {
-        return this.dataSource[this.Length-1];
+        return this.dataSource[this.Length - 1];
     }
 }
