@@ -1,83 +1,73 @@
 class List {
     constructor() {
         this.dataSource = [];
+        this.Size=0;
+        this.Position=0;
         this.Append;
+        this.Head;
+        this.Tail;
+        this.Next;
+        this.Previous;
         this.Current;
-        this.Clear;
-        this.Front;
-        this.End;
-        this.Clear;
-        this.Length = 0;
+        this.MoveCurrent;
+        this.InsertValueAfter;
+        this.Remove;
+    }
+
+    Append(element) {
+        this.dataSource[this.Size++] = element;
+    }
+
+    Head() {
         this.Position = 0;
     }
-    
-    Append(element) {
-        this.dataSource[this.Length++] = element;
+
+    Tail() {
+        this.Position=this.Size-1;
+    }
+
+    Next() {
+        if(this.Position < this.Size) {
+            this.Position++;
+        }
+    }
+
+    Previous() {
+        if(this.Position>=0) {
+            this.Position--;
+        }
+    }
+
+    MoveCurrent(newPosition) {
+        if(newPosition >= 0 && newPosition <= this.Size) {
+            this.Position=newPosition;
+        }
     }
 
     Current() {
         return this.dataSource[this.Position];
     }
 
-    Clear() {
-        this.Length = 0;
-        this.Position = 0;
-        return this.dataSource = [];
-    }
+    InsertValueAfter(newValue, afterValue) {
+        let afterValueId = this.#GetValueId(afterValue);
 
-    End() {
-        this.Position = this.Length - 1;
-    }
-
-    Front() {
-        this.Position = 0;
-    }
-
-    Insert(value, after) {
-        let afterId = this.#GetId(after);
-        
-        if(afterId > -1) {
-            this.dataSource.splice(afterId+1, 0, value);
-            this.Length++;
-            return true;
-        }
-
-        return false;
-    }
-
-    MoveTo(newPosition) {
-        if(newPosition > 0 && newPosition < this.Length) {
-            this.Position = newPosition;
+        if(afterValueId>-1) {
+            this.Size++;
+            this.dataSource.splice(afterValueId+1, 0, newValue);
         }
     }
 
-    Next() {
-        if(this.Position < this.Length) {
-            this.Position++;
+    Remove(element) {
+        let removeId = this.#GetValueId(element);
+
+        if(removeId>-1) {
+            this.dataSource.splice(removeId, 1);
         }
     }
 
-    Previous() {
-        if(this.Position > 0) {
-            this.Position--;
-        }
-    }
-
-    Remove(value) {
-        let removeElementAtId = this.#GetId(value);
-
-        if(removeElementAtId > -1) {
-            this.dataSource.splice(removeElementAtId, 1);
-            this.Length--;
-            return true;
-        }
-
-        return false;
-    }
-
-    #GetId(value) {
-        for(let i = 0; i < this.dataSource.length; i++) {
-            if(value === this.dataSource[i]) {
+    #GetValueId(element) {
+        for(let i=0; i<this.dataSource.length; i++) {
+            if(element === this.dataSource[i]) {
                 return i;
             }
         }
