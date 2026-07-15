@@ -1,26 +1,25 @@
 class Stack {
     constructor() {
         this.dataSource = [];
-        this.Length = 0;
+        this.Size = 0;
         this.Push;
         this.Pop;
         this.Peek;
-        this.Clear;
     }
 
     Push(element) {
-        this.dataSource[this.Length++] = element;
+        this.dataSource[this.Size++] = element;
     }
 
     Pop() {
-        return this.dataSource[--this.Length]
+        if(this.Size > 0) {
+            return this.dataSource[--this.Size];
+        }
     }
 
     Peek() {
-        return this.dataSource[this.Length - 1];
-    }
-
-    Clear() {
-        this.Length = 0;
+        if(this.Size > -1) {
+            return this.dataSource[this.Size-1];
+        }
     }
 }
