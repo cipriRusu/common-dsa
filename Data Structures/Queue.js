@@ -30,13 +30,3 @@ class Queue {
         this.dataSource=[];
     }
 }
-
-let queue = new Queue();
-
-queue.Enqueue(2);
-queue.Enqueue(3);
-queue.Clear()
-
-queue.Enqueue(4)
-
-console.log(queue)
