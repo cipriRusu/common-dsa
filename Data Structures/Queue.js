@@ -24,4 +24,19 @@ class Queue {
     Tail() {
         return this.dataSource[this.Length-1];
     }
+
+    Clear() {
+        this.Length=0;
+        this.dataSource=[];
+    }
 }
+
+let queue = new Queue();
+
+queue.Enqueue(2);
+queue.Enqueue(3);
+queue.Clear()
+
+queue.Enqueue(4)
+
+console.log(queue)
