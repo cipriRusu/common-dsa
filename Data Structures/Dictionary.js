@@ -19,6 +19,7 @@ class Dictionary {
 
     Remove(key) {
         this.dataSource = this.dataSource.filter((x) => { return Object.keys(x)[0] !== String(key) })
+        this.Count--;
     }
 
     Sort() {
