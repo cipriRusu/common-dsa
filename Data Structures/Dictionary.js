@@ -5,6 +5,7 @@ class Dictionary {
         this.Add;
         this.Remove;
         this.Find;
+        this.Sort;
         this.ShowAll;
     }
 
@@ -18,6 +19,10 @@ class Dictionary {
 
     Remove(key) {
         this.dataSource = this.dataSource.filter((x) => { return Object.keys(x)[0] !== String(key) })
+    }
+
+    Sort() {
+        this.dataSource.sort((a, b) => { return Number(Object.keys(a)) - Number(Object.keys(b))})
     }
 
     ShowAll() {
