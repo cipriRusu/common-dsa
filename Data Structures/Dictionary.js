@@ -5,28 +5,33 @@ class Dictionary {
         this.Add;
         this.Remove;
         this.Find;
-        this.Sort;
+        this.ShowSorted;
         this.ShowAll;
     }
 
     Add(key, value) {
-        this.dataSource[this.Count++] = {[key]: value}
+        this.dataSource[key]=value;
+        this.Count++;
     }
 
     Find(key) {
-        return this.dataSource.filter((x) => {return Object.keys(x)[0] === String(key)})[0]
+        return this.dataSource[key];
     }
 
     Remove(key) {
-        this.dataSource = this.dataSource.filter((x) => { return Object.keys(x)[0] !== String(key) })
+        delete this.dataSource[key];
         this.Count--;
     }
 
-    Sort() {
-        this.dataSource.sort((a, b) => { return Number(Object.keys(a)) - Number(Object.keys(b))})
+    ShowSorted() {
+        for(let key of Object.keys(this.dataSource).sort()){
+            console.log(key + '->' + this.dataSource[key]);
+        }
     }
 
     ShowAll() {
-        return this.dataSource
+        for(let key of Object.keys(this.dataSource)) {
+            console.log(key + '->' + this.dataSource[key]);
+        }
     }
 }
