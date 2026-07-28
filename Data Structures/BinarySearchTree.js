@@ -1,8 +1,8 @@
 class Node {
     constructor(value, left, right) {
         this.value=value;
-        this.left=null;
-        this.right=null;
+        this.left=left;
+        this.right=right;
     }
 }
 
@@ -34,7 +34,7 @@ class BinarySearchTree {
         let current=this.head;
 
         while(current) {
-            if(newNode.value < this.head.value) {
+            if(newNode.value < current.value) {
                 if(current.left === null) {
                     current.left=newNode;
                     this.Count++;
